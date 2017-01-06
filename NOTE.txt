@@ -1,0 +1,10 @@
+1.函数iic_init(uint8_t select)用来选择用于IIC的GPIO管脚，以此来选择使用EEPROM还是加密芯片
+
+2.在使用EEPROM之前调用iic_init(SELECT_EEPROM);
+
+
+3.在加密之前调用iic_init(SELECT_ENCRYPT)，可以选择将其放在EncryptProcess()内部
+4.加密需要实现1ms延时，_alpu_delay_ms函数需要用到，我使用的是nop指令
+5.使用函数_alpu_rand()产生随机数，需要用户自行产生随机数
+6.调用EncryptProcess()完成加密功能，返回0表示加密成功，否则失败
+
